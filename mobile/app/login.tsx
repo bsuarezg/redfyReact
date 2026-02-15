@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useAuth } from '../context/AuthContext';
 import { useState } from 'react';
@@ -10,6 +10,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTextInput = styled(TextInput);
 const StyledTouchableOpacity = styled(TouchableOpacity);
+const StyledImage = styled(Image);
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -30,7 +31,12 @@ export default function Login() {
 
   return (
     <SafeAreaView className="flex-1 bg-white items-center justify-center p-4">
-      <StyledView className="w-full max-w-sm">
+      <StyledView className="w-full max-w-sm items-center">
+        <StyledImage
+          source={require('../assets/logo.png')}
+          className="w-32 h-32 mb-6"
+          resizeMode="contain"
+        />
         <StyledText className="text-2xl font-bold mb-6 text-center text-gray-800">
           Sign In
         </StyledText>
@@ -57,7 +63,7 @@ export default function Login() {
         ) : null}
 
         <StyledTouchableOpacity
-          className="bg-blue-600 p-4 rounded-lg items-center"
+          className="bg-primary p-4 rounded-lg items-center w-full"
           onPress={handleLogin}
         >
           <StyledText className="text-white font-bold text-lg">Login</StyledText>

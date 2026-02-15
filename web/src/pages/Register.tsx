@@ -95,7 +95,7 @@ export function Register() {
                   value="individual"
                   checked={accountType === 'individual'}
                   onChange={(e) => setAccountType(e.target.value)}
-                  className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                  className="h-4 w-4 border-gray-300 text-primary focus:ring-primary"
                 />
                 <span className="ml-2 text-sm text-gray-700">Individual / Professional</span>
               </label>
@@ -106,7 +106,7 @@ export function Register() {
                   value="clinic"
                   checked={accountType === 'clinic'}
                   onChange={(e) => setAccountType(e.target.value)}
-                  className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                  className="h-4 w-4 border-gray-300 text-primary focus:ring-primary"
                 />
                 <span className="ml-2 text-sm text-gray-700">Clinic / Organization</span>
               </label>
@@ -120,7 +120,7 @@ export function Register() {
               type="checkbox"
               checked={consent}
               onChange={(e) => setConsent(e.target.checked)}
-              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
+              className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
             />
             <label htmlFor="consent" className="ml-3 block text-sm leading-6 text-gray-900">
               I have read and accept the terms and conditions

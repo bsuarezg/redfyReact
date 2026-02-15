@@ -12,7 +12,7 @@ export function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-xl font-bold text-blue-600">Redfy</span>
+              <img className="h-8 w-auto" src="/logo.png" alt="Redfy" />
             </Link>
           </div>
           <div className="flex items-center space-x-4">

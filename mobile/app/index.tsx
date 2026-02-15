@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 import { useAuth } from '../context/AuthContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,6 +7,7 @@ import { styled } from 'nativewind';
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTouchableOpacity = styled(TouchableOpacity);
+const StyledImage = styled(Image);
 
 export default function Home() {
   const { user, logout } = useAuth();
@@ -15,7 +16,12 @@ export default function Home() {
   return (
     <SafeAreaView className="flex-1 bg-white items-center justify-center p-4">
       <StyledView className="w-full max-w-sm items-center">
-        <StyledText className="text-3xl font-bold text-blue-600 mb-4 text-center">
+        <StyledImage
+          source={require('../assets/logo.png')}
+          className="w-40 h-40 mb-4"
+          resizeMode="contain"
+        />
+        <StyledText className="text-3xl font-bold text-primary mb-4 text-center">
           Redfy Health
         </StyledText>
 
@@ -26,7 +32,7 @@ export default function Home() {
             </StyledText>
 
             <StyledTouchableOpacity
-              className="bg-blue-600 w-full py-3 rounded-lg mb-4"
+              className="bg-primary w-full py-3 rounded-lg mb-4"
               onPress={() => router.push('/profile')}
             >
               <StyledText className="text-white text-center font-semibold text-lg">
@@ -50,7 +56,7 @@ export default function Home() {
             </StyledText>
 
             <Link href="/login" asChild>
-              <StyledTouchableOpacity className="bg-blue-600 w-full py-3 rounded-lg mb-4">
+              <StyledTouchableOpacity className="bg-primary w-full py-3 rounded-lg mb-4">
                 <StyledText className="text-white text-center font-semibold text-lg">
                   Login
                 </StyledText>
@@ -58,8 +64,8 @@ export default function Home() {
             </Link>
 
             <Link href="/register" asChild>
-              <StyledTouchableOpacity className="bg-white border border-blue-600 w-full py-3 rounded-lg">
-                <StyledText className="text-blue-600 text-center font-semibold text-lg">
+              <StyledTouchableOpacity className="bg-white border border-primary w-full py-3 rounded-lg">
+                <StyledText className="text-primary text-center font-semibold text-lg">
                   Register
                 </StyledText>
               </StyledTouchableOpacity>
