@@ -15,6 +15,7 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [accountType, setAccountType] = useState('individual'); // 'individual' or 'clinic'
   const [consent, setConsent] = useState(false);
   const [error, setError] = useState('');
 
@@ -32,7 +33,12 @@ export default function Register() {
     }
 
     try {
-      const response = await api.post('/register', { email, password, consent: true });
+      const response = await api.post('/register', {
+        email,
+        password,
+        account_type: accountType,
+        consent: true
+      });
       await login(response.data.token, response.data.user);
       router.replace('/');
     } catch (err: any) {
@@ -72,6 +78,29 @@ export default function Register() {
             onChangeText={setConfirmPassword}
             secureTextEntry
           />
+
+          <StyledView className="mb-4">
+            <StyledText className="text-sm font-bold text-gray-700 mb-2">Account Type</StyledText>
+            <StyledView className="flex-row space-x-4">
+              <StyledTouchableOpacity
+                className={`flex-1 p-3 rounded-lg border ${accountType === 'individual' ? 'bg-blue-50 border-blue-600' : 'border-gray-300'}`}
+                onPress={() => setAccountType('individual')}
+              >
+                <StyledText className={`text-center ${accountType === 'individual' ? 'text-blue-600 font-bold' : 'text-gray-600'}`}>
+                  Individual
+                </StyledText>
+              </StyledTouchableOpacity>
+
+              <StyledTouchableOpacity
+                className={`flex-1 p-3 rounded-lg border ${accountType === 'clinic' ? 'bg-blue-50 border-blue-600' : 'border-gray-300'}`}
+                onPress={() => setAccountType('clinic')}
+              >
+                <StyledText className={`text-center ${accountType === 'clinic' ? 'text-blue-600 font-bold' : 'text-gray-600'}`}>
+                  Clinic
+                </StyledText>
+              </StyledTouchableOpacity>
+            </StyledView>
+          </StyledView>
 
           <StyledTouchableOpacity
             className="flex-row items-center mb-6"
