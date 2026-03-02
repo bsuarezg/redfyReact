@@ -10,10 +10,20 @@ const StyledText = styled(Text);
 const StyledTextInput = styled(TextInput);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 
+interface UserProfile {
+  surname: string;
+  phone: string;
+  dni: string;
+  birthdate: string;
+  address: string;
+  city: string;
+  zipcode: string;
+}
+
 export default function Profile() {
   const { user, logout } = useAuth();
-  const [profile, setProfile] = useState<any>(null);
-  const [formData, setFormData] = useState({
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [formData, setFormData] = useState<UserProfile>({
     surname: '',
     phone: '',
     dni: '',
@@ -58,7 +68,7 @@ export default function Profile() {
     }
   };
 
-  const handleChange = (name: string, value: string) => {
+  const handleChange = (name: keyof UserProfile, value: string) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
