@@ -10,9 +10,7 @@ class Profile extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'account_type', // individual, clinic
-        'organization_id',
         'surname',
         'phone',
         'dni',
