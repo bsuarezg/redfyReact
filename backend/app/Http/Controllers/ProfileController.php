@@ -22,7 +22,12 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = $request->user();
-        $profile = $user->profile ?? new Profile(['user_id' => $user->id]);
+        $profile = $user->profile;
+
+        if (!$profile) {
+            $profile = new Profile();
+            $profile->user_id = $user->id;
+        }
 
         $validatedData = $request->validate([
             'surname' => 'nullable|string',
